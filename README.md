@@ -29,7 +29,7 @@ JSON.parse('{a: 10}')
 
 # window.onload 和 DOMContentLoaded 的区别？ （浏览器的渲染过程）
 
-# 用JS创建10个 <li> 标签，点击的时候弹出来对应的序号？ （作用域）
+# 用JS创建10个 li 标签，点击的时候弹出来对应的序号？ （作用域）
 
 # 简述如何实现一个模块加载器，实现类似require.js的基本功能 （JS模块化）
 
@@ -63,7 +63,7 @@ console.log(fn.prototype)
 4.所有的引用类型（数组、对象、函数）,__proto__属性值指向它的构造函数的"prototype"属性值  
 console.log(obj.__proto__ === Object.prototype)  
 console.log(fn.__proto__ === Function.prototype)  
-5.当试图得到一个对象的某个属性时, 如果这个对象本身没有这个属性, 那么会去它的__proto__（即它的构造函数的prototype）中寻找  
+5.当试图得到一个对象的某个属性时, 如果这个对象本身没有这个属性, 那么会去它的__proto__即它的构造函数的prototype中寻找  
 //  构造函数    
 function Foo(name, age) {  
 >>this.name = name  
