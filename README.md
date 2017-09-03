@@ -217,3 +217,42 @@ var firstLoad = isFirstLoad()
 firstLoad(10)   //  true  
 firstLoad(10)   //  false  
 firstLoad(20)   //  true  
+
+# 同步和异步的区别是什么？ 分别举一个同步和异步的例子
+### 区别
+1. 同步会阻塞代码执行，而异步不会
+2. alert是同步，setTimeout是异步
+![Alt text](/images/async.png)  
+**异步不会阻塞程序的运行**
+//  异步例子
+console.log(100)  
+setTimeout(() => {  
+>>console.log(200)  
+
+}, 1000)  
+console.log(300)
+
+//  同步例子
+console.log(100)  
+alert(200)  
+console.log(300)  
+
+# 一个关于 setTimeout 的笔试题
+console.log(1)  
+setTimeout(function () {  
+>>console.log(2)  
+
+}, 0)  
+console.log(3)  
+setTimeout(function () {  
+>>console.log(4)  
+
+}, 1000)  
+console.log(5)    
+
+答案： 1, 3, 5, 2, 4  
+
+# 前端使用异步的场景有哪些
+1.定时任务：setTimeout、setInverval  
+2.网络请求：ajax请求、动态\<img\>加载  
+3.事件绑定  
