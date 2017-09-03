@@ -256,3 +256,88 @@ console.log(5)
 1.定时任务：setTimeout、setInverval  
 2.网络请求：ajax请求、动态\<img\>加载  
 3.事件绑定  
+
+# Date 类型的方法
+![Alt text](/images/date.png)  
+
+# Array 类型的方法
+![Alt text](/images/Array.png)  
+var arr = [1, 2, 3]  
+arr.forEach((item, index) => {  
+>>console.log(index, item)  
+
+}) 
+
+arr.every((item, index) => {  
+>>if (item < 4) {  
+>>>>return true  
+
+>>}    
+
+}) 
+
+arr.some((item, index) => {  
+>>if (item < 4) {  
+>>>>return true  
+
+>>} 
+
+}) 
+
+arr.sort((a, b) => {  
+>>//    从小到大排序
+>>return a - b
+})
+
+arr.map((item, index) => {  
+>>return '\<b\>' + item + '|' + index + '<\/b>'
+
+}) //   ['\<b\>1|0<\/b>', '\<b\>2|1<\/b>', '\<b\>3|2<\/b>']
+
+arr.filter((item, index) => {  
+>>if (item >= 2) {  
+>>>>return true  
+
+>>}    
+
+})  //  [2, 3]
+
+# 获取 2017-06-10 格式的日期
+![Alt text](/images/formatDate.png)  
+
+# 获取一个随机数，要求是长度一直的字符串格式
+var random = Math.random()  
+var random = random + '00000'   //  后面加上5个零  
+var random = random.slice(0, 5) //  字符串截取  
+console.log(random)  
+
+# 写一个能遍历对象和数组的通用 forEach 函数
+function forEach (obj, fn) {  
+>>var key  
+>>if (obj instanceof Array) {  
+>>>>//  准确判断是不是数组
+>>>>obj.forEach((item, index) => {  
+>>>>>>fn(item, index)  
+
+>>>>})  
+
+>>}  else {  
+>>>>//  不是数组就是对象  
+>>>>for (key in obj) {  
+>>>>>>fn(obj[key], key)  
+
+>>>>}  
+
+>>}
+
+}  
+var arr = [1, ,2 ,3]  
+forEach(arr, (item, index) => {  
+>>console.log(item, index)  
+
+})  
+var obj = {x: 100, y: 200}  
+forEach(obj, (value, key) => {  
+>>console.log(value, key)  
+
+})
