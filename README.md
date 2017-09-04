@@ -341,3 +341,39 @@ forEach(obj, (value, key) => {
 >>console.log(value, key)  
 
 })
+
+# DOM是哪种基础的数据结构？
+
+# DOM操作的常用API有哪些
+1. 获取DOM节点，以及节点的property和Attribute
+2. 获取父节点，获取子节点
+
+parentNode
+3. 新增节点，删除节点
+
+# DOM节点的attr和property有何区别
+1. property 只是一个JS对象的属性的修改
+2. Attribute 是对HTML标签属性的修改
+
+# BOM
+1. **navigator浏览器属性**  
+var ua = navigator.userAgent  
+var isChrome = ua.indexOf('Chrome')  
+console.log(isChrome)
+
+2. **screen屏幕属性**
+console.log(screen.width)
+
+3. **location、URL属性**
+console.log(location.href)  
+console.log(location.protocol)  //  'http:' 'https:'  
+console.log(location.pathname)  //  '/learn/199'  
+console.log(location.search)    //  '?a=1&b=2'  
+console.log(location.hash)      //  '#/sasa'  
+
+4. **history历史记录**
+history.back()      //  返回  
+history.forward()   //  前进
+
+# 编写一个通用的事件绑定函数
+![Alt text](/images/addEventListener.png)
