@@ -27,8 +27,6 @@ JSON只不过是一个JS 对象而已
 JSON.stringify({a: 10})  
 JSON.parse('{a: 10}')
 
-# window.onload 和 DOMContentLoaded 的区别？ （浏览器的渲染过程）
-
 # 用JS创建10个 \<li\> 标签，点击的时候弹出来对应的序号？ （作用域）
 var i  
 for (i = 0; i < 10; i++) {  
@@ -44,9 +42,14 @@ for (i = 0; i < 10; i++) {
 
 }
 
-# 简述如何实现一个模块加载器，实现类似require.js的基本功能 （JS模块化）
-
 # 实现数组的随机排序 （JS基础算法）
+//  利用Math.random() 返回 0 ~ 1之间的随机数  
+function randomSort (a, b) {  
+>>return Math.random() > 0.5 ? -1 : 1  
+
+}  
+var arr = [1, 2, 3, 4, 5, 6]  
+arr.sort(randomSort)
 
 # 构造函数 (构造函数首字母要大写规范)
 function Foo (name, age) {  
@@ -65,18 +68,18 @@ function Foo(){...} 其实是 var Foo = new Function(...)
 使用 instanceof 判断一个函数是否是一个变量的构造函数
 
 # 原型规则和示例
-1.所有的引用类型（数组、对象、函数）,都具有对象特性，即可自由扩展属性  
+**1.所有的引用类型（数组、对象、函数）,都具有对象特性，即可自由扩展属性**  
 var obj = {}  obj.a = 100  
 function fn() {}  fn.a = 100  
-2.所有的引用类型（数组、对象、函数）,都有一个\_\_proto\_\_属性,属性值是一个普通的对象  
+**2.所有的引用类型（数组、对象、函数）,都有一个\_\_proto\_\_属性,属性值是一个普通的对象**  
 console.log(obj.\_\_proto\_\_)  
 console.log(fn.\_\_proto\_\_)  
-3.所有的函数, 都有一个prototype属性，属性值也是普通的对象  
+**3.所有的函数, 都有一个prototype属性，属性值也是普通的对象**  
 console.log(fn.prototype)  
-4.所有的引用类型（数组、对象、函数）,\_\_proto\_\_属性值指向它的构造函数的"prototype"属性值  
+**4.所有的引用类型（数组、对象、函数）,\_\_proto\_\_属性值指向它的构造函数的"prototype"属性值**  
 console.log(obj.\_\_proto\_\_ === Object.prototype)  
 console.log(fn.\_\_proto\_\_ === Function.prototype)  
-5.当试图得到一个对象的某个属性时, 如果这个对象本身没有这个属性, 那么会去它的\_\_proto\_\_即它的构造函数的prototype中寻找  
+**5.当试图得到一个对象的某个属性时, 如果这个对象本身没有这个属性, 那么会去它的\_\_proto\_\_即它的构造函数的prototype中寻找**  
 //  构造函数    
 function Foo(name, age) {  
 >>this.name = name  
@@ -147,10 +150,10 @@ div1.html('\<p\>achen<\/p>').on('click', function() {
 }).html('\<p\>javascript<\/p>')
 
 # 描述new 一个对象的过程
-1.创建一个新对象  
-2.this指向这个新对象  
-3.执行代码，即对this赋值  
-4.返回this  
+**1.创建一个新对象**  
+**2.this指向这个新对象**  
+**3.执行代码，即对this赋值**  
+**4.返回this**  
 ![Alt text](/images/structure.png)
 
 # zepto（或其他框架）源码中如何使用原型链
@@ -159,7 +162,7 @@ div1.html('\<p\>achen<\/p>').on('click', function() {
 函数声明和函数表达式、变量提升
 
 # 说明this几种不同的使用场景
-**1.this要在执行时才能确认值，定义时无法确认**
+**1.this要在执行时才能确认值，定义时无法确认**  
 var a = {  
 >>name: 'A',  
 >>fn: function () {  
@@ -220,8 +223,8 @@ firstLoad(20)   //  true
 
 # 同步和异步的区别是什么？ 分别举一个同步和异步的例子
 ### 区别
-1. 同步会阻塞代码执行，而异步不会
-2. alert是同步，setTimeout是异步
+**1. 同步会阻塞代码执行，而异步不会**
+**2. alert是同步，setTimeout是异步**
 ![Alt text](/images/async.png)  
 **异步不会阻塞程序的运行**
 //  异步例子
@@ -253,9 +256,9 @@ console.log(5)
 答案： 1, 3, 5, 2, 4  
 
 # 前端使用异步的场景有哪些
-1.定时任务：setTimeout、setInverval  
-2.网络请求：ajax请求、动态\<img\>加载  
-3.事件绑定  
+**1.定时任务：setTimeout、setInverval**  
+**2.网络请求：ajax请求、动态\<img\>加载**  
+**3.事件绑定**  
 
 # Date 类型的方法
 ![Alt text](/images/date.png)  
@@ -342,29 +345,34 @@ forEach(obj, (value, key) => {
 
 })
 
-# DOM是哪种基础的数据结构？
-
 # DOM操作的常用API有哪些
-1. 获取DOM节点，以及节点的property和Attribute
-2. 获取父节点，获取子节点
+**1. 获取DOM节点，以及节点的property和Attribute**  
+**2. 获取父节点，获取子节点**  
+>>childNodes  //得到s的全部子节点  
+>>parentNode   //得到s的父节点  
+>>nextSbiling   //获得s的下一个兄弟节点  
+>>previousSbiling  //得到s的上一个兄弟节点  
+>>firstChild   //获得s的第一个子节点  
+>>lastChile   //获得s的最后一个子节点  
 
-parentNode
-3. 新增节点，删除节点
+**3. 新增节点，删除节点**
+>>appendChild  
+>>removeChild  
 
-# DOM节点的attr和property有何区别
-1. property 只是一个JS对象的属性的修改
-2. Attribute 是对HTML标签属性的修改
+# DOM节点的attr和property有何区别  
+**1. property 只是一个JS对象的属性的修改**  
+**2. Attribute 是对HTML标签属性的修改**  
 
 # BOM
-1. **navigator浏览器属性**  
+**1. navigator浏览器属性**    
 var ua = navigator.userAgent  
 var isChrome = ua.indexOf('Chrome')  
 console.log(isChrome)
 
-2. **screen屏幕属性**
+**2. screen屏幕属性**  
 console.log(screen.width)
 
-3. **location、URL属性**
+**3. location、URL属性**  
 console.log(location.href)  
 console.log(location.protocol)  //  'http:' 'https:'  
 console.log(location.pathname)  //  '/learn/199'  
@@ -377,3 +385,53 @@ history.forward()   //  前进
 
 # 编写一个通用的事件绑定函数
 ![Alt text](/images/addEventListener.png)
+
+# 简述事件冒泡流程
+1. DOM树形结构
+2. 事件冒泡
+3. 阻止冒泡
+4. 代理
+
+# 无限下拉加载图片的页面，绑定事件
+1. 使用代理
+2. 知道代理的两个优势
+
+# CommonJS
+**nodeJs 模块化规范，现在被大量用于前端，原因：**  
+**1. 前端开发依赖的插件和库，都可以从npm中获取**    
+**2. 构建工具的高度自动化，使得使用npm的成本非常低**  
+**3. CommonJS 不会异步加载JS，而是同步一次性加载出来**  
+
+# 从输入url到得到html的详细过程
+**1. 输入域名之后，浏览器根据DNS服务器得到域名的IP地址**  
+**2. 向这个IP的机器发送http请求**  
+**3. 服务器收到、处理并返回http请求**  
+**4. 浏览器得到返回内容**  
+
+# window.onload 和 DOMContentLoaded 的区别
+window.addEventListener('load', () => {  
+>>//&nbsp; &nbsp; 页面的全部资源加载完才会执行，包括图片、视频等  
+
+})  
+document.addEventListener('DOMContentLoaded', () => {  
+>>//    DOM 渲染完即可执行，此时图片、视频可能还没加载完  
+
+})
+
+# 前端安全
+<img src="./images/XSS.png" width="400">    
+
+>>### 解决方案
+>>1. 前端替换关键字，例如 \< 为 \&lt; \> 为 \&gt;  
+>>2. 后端替换  
+
+<img src="./images/XSRF.png" width="400">  
+
+>>### 解决方案
+>>1. 增加验证流程，如输入指纹、密码、短信验证码
+
+
+ 
+
+
+
