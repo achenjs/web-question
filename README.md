@@ -156,8 +156,6 @@ div1.html('\<p\>achen<\/p>').on('click', function() {
 **4.返回this**  
 ![Alt text](/images/structure.png)
 
-# zepto（或其他框架）源码中如何使用原型链
-
 # 说一下对变量提升的理解
 函数声明和函数表达式、变量提升
 
@@ -223,9 +221,9 @@ firstLoad(20)   //  true
 
 # 同步和异步的区别是什么？ 分别举一个同步和异步的例子
 ### 区别
-**1. 同步会阻塞代码执行，而异步不会**
+**1. 同步会阻塞代码执行，而异步不会**  
 **2. alert是同步，setTimeout是异步**
-![Alt text](/images/async.png)  
+<img src="./images/async.png" width="400" style="display: block">  
 **异步不会阻塞程序的运行**
 //  异步例子
 console.log(100)  
@@ -264,9 +262,11 @@ console.log(5)
 ![Alt text](/images/date.png)  
 
 # Array 类型的方法
-![Alt text](/images/Array.png)  
-var arr = [1, 2, 3]  
+<img src="./images/Array.png" width="400" style="display: block">  
+var arr = [1, 2, 3] 
+ 
 arr.forEach((item, index) => {  
+
 >>console.log(index, item)  
 
 }) 
