@@ -224,8 +224,8 @@ firstLoad(20)   //  true
 **1. 同步会阻塞代码执行，而异步不会**  
 **2. alert是同步，setTimeout是异步**
 <img src="./images/async.png" width="400" style="display: block">  
-**异步不会阻塞程序的运行**
-//  异步例子
+**异步不会阻塞程序的运行**  
+//  异步例子  
 console.log(100)  
 setTimeout(() => {  
 >>console.log(200)  
@@ -233,7 +233,7 @@ setTimeout(() => {
 }, 1000)  
 console.log(300)
 
-//  同步例子
+//  同步例子  
 console.log(100)  
 alert(200)  
 console.log(300)  
@@ -379,12 +379,19 @@ console.log(location.pathname)  //  '/learn/199'
 console.log(location.search)    //  '?a=1&b=2'  
 console.log(location.hash)      //  '#/sasa'  
 
-4. **history历史记录**
+**4. history历史记录**  
 history.back()      //  返回  
 history.forward()   //  前进
 
 # 编写一个通用的事件绑定函数
 ![Alt text](/images/addEventListener.png)
+
+# on事件的原理实现
+**事件委托的优点：**  
+1.在页面dom元素较多的情况下，大大减少了dom操作，优化了性能；  
+2.值需要为一个父元素绑定事件，就可以管理他下面的所有子元素；  
+
+# 
 
 # 简述事件冒泡流程
 1. DOM树形结构
