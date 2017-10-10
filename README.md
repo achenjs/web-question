@@ -354,12 +354,19 @@ console.log(location.pathname)  //  '/learn/199'
 console.log(location.search)    //  '?a=1&b=2'  
 console.log(location.hash)      //  '#/sasa'  
 
-4. **history历史记录**
+**4. history历史记录**  
 history.back()      //  返回  
 history.forward()   //  前进
 
 # 编写一个通用的事件绑定函数
 ![Alt text](/images/addEventListener.png)
+
+# on事件的原理实现
+**事件委托的优点：**  
+1.在页面dom元素较多的情况下，大大减少了dom操作，优化了性能；  
+2.值需要为一个父元素绑定事件，就可以管理他下面的所有子元素；  
+
+# 
 
 # 简述事件冒泡流程
 1. DOM树形结构
@@ -416,6 +423,63 @@ beforeMount: type(func) 在挂载开始之前被调用：相关的 render 函数
 
 
 ```
+# react
+1. 生命周期（常用钩子函数）  
+```
+getInitalState () {
+  //  初始化组件state, es6写法使用constructor(props, context) {
+    super(props, context)
+    this.state = {}
+  }
+}
+componentDidmount () {
+  //  render 之后执行  ajax等操作
+}
+shouldComponentUpdate (nextProps, nextState) {
+  //  用于性能优化
+  return true
+}
+componentDidUpdate(prevProps, prevState) {
+  //  触发更新完成
+  //  ajax
+}
+componentWillUnmount () {
+  //  清空定时器
+}
+```
+2. 智能组件和木偶组件
+```
+智能组件：单独的组件,用于管理数据和规则
+木偶组件：公共组件,不管数据和规则,之用于展示数据
+```
+3. react性能优化
+```
+性能检测
+import Perf from 'react-addons-perf'
+if (__DEV__) {
+  window.Perf = Perf
+}
 
+PureRenderMixin 基本优化,可以解决props或者state没有变化也莫名出发更新的情况
+import PureRenderMixin from 'react-addons-pure-render-mixin'
+constructor (props, context) {
+  this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this)
+  重写组件的shouldComponentUpdate函数,在每次更新之前判断props和state,如果有变化则返回true,反之
+}
 
+Immutable.js 终极优化
+Immutable实现了js中不可变数据的概念,适用于数据结构层次很深
+
+```
+
+4. react-router
+
+5. redux
+```
+Redux是一个数据状态管理插件,搭配React特别合适,用来管理组件之间的共享信息
+第一步：定义规则  reducer
+第二步：根据规则生成  store
+第三步：订阅数据（即state）变化  subscribe
+第四步：触发数据变化  dispatch
+```
 
