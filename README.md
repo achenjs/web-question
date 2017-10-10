@@ -276,7 +276,7 @@ arr.sort((a, b) => {
   return a - b
 })
 arr.map((item, index) => {  
-  return '<b>' + item + '|' + index + '</b>'
+  return' + item + '|' + index + '</b>'
 }) 
 //  ['<b>1|0</b>', '<b>2|1</b>', '<b>3|2</b>']
 arr.filter((item, index) => {  
@@ -405,7 +405,17 @@ document.addEventListener('DOMContentLoaded', () => {
 >>1. 增加验证流程，如输入指纹、密码、短信验证码
 
 
- 
+# Vue
+1. 生命周期
+```
+beforeCreate: type(func) 在实例初始化之后，数据观测(data observer) 和 event/watcher 事件配置之前被调用。
+
+created: type(func) 实例已经创建完成之后被调用。
+
+beforeMount: type(func) 在挂载开始之前被调用：相关的 render 函数首次被调用。 该钩子在服务器端渲染期间不被调用。
+
+
+```
 
 
 
