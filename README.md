@@ -421,8 +421,11 @@ created: type(func) 实例已经创建完成之后被调用。
 
 beforeMount: type(func) 在挂载开始之前被调用：相关的 render 函数首次被调用。 该钩子在服务器端渲染期间不被调用。
 
-
 ```
+2. vue-router
+
+3. vuex
+
 # react
 1. 生命周期（常用钩子函数）  
 ```
