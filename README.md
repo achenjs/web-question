@@ -1,3 +1,27 @@
+# 前端跨域解决方案CORS、JSONP的区别
+```
+CORS: IE10以上，支持任何请求，分为简单请求和非简单请求
+对于简单请求，浏览器直接发出CORS请求。具体来说，就是在头信息之中，增加一个Origin字段。Origin字段用来说明，本次请求来自哪个源（协议 + 域名 + 端口）。服务器根据这个值，决定是否同意这次请求。
+非简单请求是那种对服务器有特殊要求的请求，比如请求方法是PUT或DELETE，或者Content-Type字段的类型是application/json。"预检"请求用的请求方法是OPTIONS，表示这个请求是用来询问的。
+
+JSONP: 任何浏览器，但是只支持GET请求
+```
+
+# postMessagej解决跨域、跨窗口消息传值
+postMessage(data,origin)
+1. 页面和其打开的新窗口的数据传递
+
+2. 多窗口之间消息传递
+
+3. 页面与嵌套的iframe消息传递
+
+# 数据双向绑定单向绑定优缺点
+```
+双向绑定是自动管理状态的，对处理有用户交互的场景非常合适，代码量少，当项目越来越大的时候，调试也变得越来越复杂，难以跟踪问题。
+
+单向绑定是无状态的, 程序调试相对容易, 可以避免程序复杂度上升时产生的各种问题, 当然写代码时就没有双向绑定那么爽了。
+```
+
 # typeof返回的数据类型？（考察js变量类型）
 ```
 值类型：number、string、boolean、undefined  
@@ -45,6 +69,29 @@ for (i = 0; i < 10; i++) {
   })(i) 
 }
 ```
+
+# 快排
+```
+const FastArr = (arr) => {
+  if (arr.length < 1) return arr
+  let median = Math.floor(arr.length / 2)
+  let medianVal = arr.splice(median, 1)[0]
+  let left = []
+  let right = []
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] < median) {
+      left.push(arr[i])
+    } else {
+      right.push(arr[i])
+    }
+  }
+  return FastArr(left).concat(median, FastArr(right))
+}
+```
+
+# 路由实现
+1. location.hash+hashchange
+2. history.pushState()+popState
 
 # 实现数组的随机排序 （JS基础算法）
 ```
