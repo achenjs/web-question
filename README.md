@@ -15,6 +15,19 @@ postMessage(data,origin)
 
 3. 页面与嵌套的iframe消息传递
 
+# Webpack
+```
+entry: 用来写入口文件，它将是整个依赖关系的根
+output: 即使入口文件有多个，但是只有一个输出配置
+module {} > rules [] > loader:  通过使用不同的Loader，我们能够调用外部的脚本或者工具，实现对不同格式文件的处理
+plugins {}: 可以通过插件对整个项目进行处理，例如：
+new webpack.HotModuleReplacementPlugin(),  热更新
+new HtmlWebpackPlugin({
+  inject: true,
+  template: paths.appHtml,
+}),                                        根据一个index.html,生成一个自动引用你打包后的js文件的新index.html    
+```
+
 # 数据双向绑定单向绑定优缺点
 ```
 双向绑定是自动管理状态的，对处理有用户交互的场景非常合适，代码量少，当项目越来越大的时候，调试也变得越来越复杂，难以跟踪问题。
