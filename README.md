@@ -481,8 +481,41 @@ created: type(func) 实例已经创建完成之后被调用。
 
 beforeMount: type(func) 在挂载开始之前被调用：相关的 render 函数首次被调用。 该钩子在服务器端渲染期间不被调用。
 
+methods: type(func) 
+
+updated: type(func) 由于数据更改导致的虚拟 DOM 重新渲染和打补丁，在这之后会调用该钩子。
+
+beforeDestroyed: type(func) Vue 实例销毁之前调用。
+
+destroyed: type(func) Vue 实例销毁后调用。
+
 ```
+
 2. vue-router
+```
+router的构造配置：
+1. mode                     路由模式，默认hash
+2. base                     应用的基路径
+3. linkActiveClass          全局配置 <router-link> 激活时的类名
+4. 
+全局导航守卫： 
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    // this route requires auth, check if logged in
+    // if not, redirect to login page.
+    if (!auth.loggedIn()) {
+      next({
+        path: '/login',
+        query: { redirect: to.fullPath }
+      })
+    } else {
+      next()
+    }
+  } else {
+    next() // 确保一定要调用 next()
+  }
+})
+```
 
 3. vuex
 
