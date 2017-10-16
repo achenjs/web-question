@@ -28,6 +28,112 @@ new HtmlWebpackPlugin({
 }),                                        根据一个index.html,生成一个自动引用你打包后的js文件的新index.html    
 ```
 
+# http状态码
+```
+200（成功）  服务器已成功处理了请求。通常，这表示服务器提供了请求的网页。
+400（错误请求） 服务器不理解请求的语法。 
+401（身份验证错误） 此页要求授权。您可能不希望将此网页纳入索引。 
+403（禁止） 服务器拒绝请求。
+404（未找到） 服务器找不到请求的网页。例如，对于服务器上不存在的网页经常会返回此代码。
+405（方法禁用） 禁用请求中指定的方法。
+413（请求实体过大） 服务器无法处理请求，因为请求实体过大，超出服务器的处理能力。
+414（请求的 URI 过长） 请求的 URI（通常为网址）过长，服务器无法处理。 
+500（服务器内部错误）  服务器遇到错误，无法完成请求。 
+501（尚未实施） 服务器不具备完成请求的功能。例如，当服务器无法识别请求方法时，服务器可能会返回此代码。 
+503（服务不可用） 目前无法使用服务器（由于超载或进行停机维护）。通常，这只是一种暂时的状态。
+504（网关超时）  服务器作为网关或代理，未及时从上游服务器接收请求。 
+505（HTTP 版本不受支持） 服务器不支持请求中所使用的 HTTP 协议版本。 
+```
+
+# css3 伪类写法中：和：：的区别
+```
+单冒号叫伪类是css2的写法，要求低版本兼容时可以用这个写法，双冒号叫伪元素是css3新写法，兼容主流浏览器；
+1. 伪类用于向某些选择器添加特殊的效果。
+2. 伪元素用于将特殊的效果添加到某些选择器。
+```
+
+# href和src区别
+```
+href 表示超文本引用，在 link和a 等元素上使用。src 表示来源地址，在 img、script、iframe 等元素上
+```
+
+# title和alt的区别
+```
+alt属性只能用在img、area和input元素中，用于网页中图片无法正常显示时给用户提供文字说明使其了解图像信息，alt是替代图像作用而不是提供额外说明文字的。
+title可以为元素提供额外说明信息。
+```
+
+# css3中的BFC,IFC,GFC和FFC
+```
+BFC: BFC(Block Formatting Contexts)直译为"块级格式化上下文"。Block Formatting Contexts就是页面上的一个隔离的渲染区域，容器里面的子元素不会在布局上影响到外面的元素，反之也是如此。如何产生BFC？
+float的值不为none。
+overflow的值不为visible。
+position的值不为relative和static。
+display的值为table-cell, table-caption, inline-block中的任何一个。
+那BFC一般有什么用呢？比如常见的多栏布局，结合块级别元素浮动，里面的元素则是在一个相对隔离的环境里运行。
+
+IFC: IFC(Inline Formatting Contexts)直译为"内联格式化上下文"，IFC的line box（线框）高度由其包含行内元素中最高的实际高度计算而来（不受到竖直方向的padding/margin影响)
+IFC中的line box一般左右都贴紧整个IFC，但是会因为float元素而扰乱。float元素会位于IFC与与line box之间，使得line box宽度缩短。 同个ifc下的多个line box高度会不同。 IFC中时不可能有块级元素的，当插入块级元素时（如p中插入div）会产生两个匿名块与div分隔开，即产生两个IFC，每个IFC对外表现为块级元素，与div垂直排列。
+那么IFC一般有什么用呢？
+水平居中：当一个块要在环境中水平居中时，设置其为inline-block则会在外层产生IFC，通过text-align则可以使其水平居中。
+垂直居中：创建一个IFC，用其中一个元素撑开父元素的高度，然后设置其vertical-align:middle，其他行内元素则可以在此父元素下垂直居中。
+
+GFC: GFC(GridLayout Formatting Contexts)直译为"网格布局格式化上下文"，当为一个元素设置display值为grid的时候，此元素将会获得一个独立的渲染区域，我们可以通过在网格容器（grid container）上定义网格定义行（grid definition rows）和网格定义列（grid definition columns）属性各在网格项目（grid item）上定义网格行（grid row）和网格列（grid columns）为每一个网格项目（grid item）定义位置和空间。
+那么GFC有什么用呢，和table又有什么区别呢？首先同样是一个二维的表格，但GridLayout会有更加丰富的属性来控制行列，控制对齐以及更为精细的渲染语义和控制。
+
+FFC: FFC(Flex Formatting Contexts)直译为"自适应格式化上下文"，display值为flex或者inline-flex的元素将会生成自适应容器（flex container），可惜这个牛逼的属性只有谷歌和火狐支持，不过在移动端也足够了，至少safari和chrome还是OK的，毕竟这俩在移动端才是王道。
+Flex Box 由伸缩容器和伸缩项目组成。通过设置元素的 display 属性为 flex 或 inline-flex 可以得到一个伸缩容器。设置为 flex 的容器被渲染为一个块级元素，而设置为 inline-flex 的容器则渲染为一个行内元素。
+伸缩容器中的每一个子元素都是一个伸缩项目。伸缩项目可以是任意数量的。伸缩容器外和伸缩项目内的一切元素都不受影响。简单地说，Flexbox 定义了伸缩容器内伸缩项目该如何布局。
+```
+
+# box-sizing
+```
+box-sizing 属性允许您以特定的方式定义匹配某个区域的特定元素。
+例如，假如您需要并排放置两个带边框的框，可通过将 box-sizing 设置为 "border-box"。这可令浏览器呈现出带有指定宽度和高度的框，并把边框和内边距放入框中。
+box-sizing: content-box|border-box|inherit;
+```
+
+# 懒加载的原理及实现
+```
+原理：先将img标签中的src链接设为同一张图片（空白图片），将其真正的图片地址存储再img标签的自定义属性中（比如data-src）。当js监听到该图片元素进入可视窗口时，即将自定义属性中的地址存储到src属性中，达到懒加载的效果。
+这样做能防止页面一次性向服务器响应大量请求导致服务器响应慢，页面卡顿或崩溃等问题。
+1. 既然懒加载的原理是基于判断元素是否出现在窗口可视范围内，首先我们写一个函数判断元素是否出现在可视范围内：
+function isVisible($node){
+    var winH = $(window).height(),
+        scrollTop = $(window).scrollTop(),
+        offSetTop = $(window).offSet().top;
+    if (offSetTop < winH + scrollTop) {
+        return true;
+    } else {
+        return false;
+    }
+}
+2. 再添加上浏览器的事件监听函数，让浏览器每次滚动就检查元素是否出现在窗口可视范围内：
+$(window).on("scroll", function{
+    if (isVisible($node)){
+        console.log(true);
+    }
+})
+3. 我们已经很接近了，现在我们要做的是，让元素只在第一次被检查到时打印true，之后就不再打印了
+var hasShowed = false;
+$(window).on("sroll",function{
+    if (hasShowed) {
+        return;
+    } else {
+        if (isVisible($node)) {
+            hasShowed = !hasShowed;
+            console.log(true);
+        }
+    }
+})
+```
+
+# 标准盒子模型和IE盒子模型
+```
+标准 W3C 盒子模型的范围包括 margin、border、padding、content，并且 content 部分不包含其他部分。
+IE 盒子模型的范围也包括 margin、border、padding、content，和标准 W3C 盒子模型不同的是：IE 盒子模型的 content 部分包含了 border 和 pading。
+```
+
 # 数据双向绑定单向绑定优缺点
 ```
 双向绑定是自动管理状态的，对处理有用户交互的场景非常合适，代码量少，当项目越来越大的时候，调试也变得越来越复杂，难以跟踪问题。
