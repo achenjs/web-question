@@ -629,22 +629,37 @@ router.beforeEach((to, from, next) => {
 1. 生命周期（常用钩子函数）  
 ```
 getInitalState () {
-  //  初始化组件state, es6写法使用constructor(props, context) {
+  //  初始化组件state, es6写法使用
+  constructor(props, context) {
     super(props, context)
     this.state = {}
   }
 }
+
+componentWillMount () {
+  //  render 之前执行
+}
+
 componentDidmount () {
   //  render 之后执行  ajax等操作
 }
+
+componentWillReceiveProps () {
+  //  props是父组件传递给子组件的。父组件发生render的时候子组件就会调用componentWillReceiveProps（不管props有没有更新，也不管父子组件之间有没有数据交换）。
+}
+
 shouldComponentUpdate (nextProps, nextState) {
   //  用于性能优化
+  //  每次调用setState后都会调用shouldComponentUpdate,判断是否需要重新渲染组件。默认返回true，需要重新render。
   return true
 }
+
 componentDidUpdate(prevProps, prevState) {
   //  触发更新完成
+  //  除了首次render之后调用componentDidMount，其它render结束之后都是调用componentDidUpdate。
   //  ajax
 }
+
 componentWillUnmount () {
   //  清空定时器
 }
