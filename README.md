@@ -45,6 +45,42 @@ new HtmlWebpackPlugin({
 505（HTTP 版本不受支持） 服务器不支持请求中所使用的 HTTP 协议版本。 
 ```
 
+# js数组及对象的深浅拷贝
+1. 浅拷贝,可以通过slice或者concat方法直接实现。
+```
+var arr1 = [1, 2, 3];
+var arr2 = arr1.slice(0);
+arr1[0] = 0;
+console.log(arr1);                  //  [0, 2 ,3]
+console.log(arr2);                  //  [1, 2, 3]
+
+var arr3 = [1, 2, 3];
+var arr4 = arr3.concat();
+arr3[0] = 0;
+console.log(arr3);                  //  [0, 2, 3]
+console.log(arr4);                  //  [1, 2, 3]
+```
+2. 深拷贝
+```
+var deepCopy = function(o) {
+  var n = [];
+  if (o instanceof Array) {
+    for (var i = 0; i < o.length; i++) {
+      n[i] = deepCopy(o[i]);
+    }
+    return n;
+  } else if (o instanceof Object) {
+    var n = {};
+    for (var i in o) {
+      n[i] = deepCopy(o[i]);
+    }
+    return n;
+  } else {
+    return n;
+  }
+}
+```
+
 # css3 伪类写法中：和：：的区别
 ```
 单冒号叫伪类是css2的写法，要求低版本兼容时可以用这个写法，双冒号叫伪元素是css3新写法，兼容主流浏览器；
