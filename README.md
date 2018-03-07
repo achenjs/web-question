@@ -571,7 +571,13 @@ history.forward()   //  前进
 # 数组去重
 ```
 var arr = [1, 2, 3, 4, 1, 2, 3, 4];
-[...set(arr)];
+[...new Set(arr)];
+
+let obj = {};
+arr.forEach(val => {
+  obj[val] = 1;
+})
+Object.keys(obj);
 ```
 
 # 简述事件冒泡流程
