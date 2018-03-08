@@ -10,9 +10,7 @@ JSONP: 任何浏览器，但是只支持GET请求
 # postMessagej解决跨域、跨窗口消息传值
 postMessage(data,origin)
 1. 页面和其打开的新窗口的数据传递
-
 2. 多窗口之间消息传递
-
 3. 页面与嵌套的iframe消息传递
 
 # Webpack
@@ -43,6 +41,31 @@ new HtmlWebpackPlugin({
 503（服务不可用） 目前无法使用服务器（由于超载或进行停机维护）。通常，这只是一种暂时的状态。
 504（网关超时）  服务器作为网关或代理，未及时从上游服务器接收请求。 
 505（HTTP 版本不受支持） 服务器不支持请求中所使用的 HTTP 协议版本。 
+```
+
+# 获取页面元素位置与宽高
+```
+1. element.clientWidth = content + padding
+2. element.clientHeight = content + padding
+```
+
+# js 统计一个字符串出现频率最高的字母/数字
+```
+let str = 'dasdsadwxzdsadsd';
+const strChar = str => {
+  let strArr = [...str];
+  let maxValue = '';
+  let max = 0;
+  let obj = {};
+  strArr.forEach(item => {
+    obj[item] = obj[item] == null ? obj[item]++ : 1;
+    if (obj[item] > max) {
+      max = obj[item];
+      maxValue = item;
+    }
+  });
+  return maxValue;
+}
 ```
 
 # js数组及对象的深浅拷贝
@@ -275,18 +298,20 @@ function Foo(){...} 其实是 var Foo = new Function(...)
 使用 instanceof 判断一个函数是否是一个变量的构造函数
 ```
 # 原型规则和示例
-**1.所有的引用类型（数组、对象、函数）,都具有对象特性，即可自由扩展属性**  
+```
+1.所有的引用类型（数组、对象、函数）,都具有对象特性，即可自由扩展属性  
 var obj = {}  obj.a = 100  
 function fn() {}  fn.a = 100  
-**2.所有的引用类型（数组、对象、函数）,都有一个\_\_proto\_\_属性,属性值是一个普通的对象**  
-console.log(obj.\_\_proto\_\_)  
-console.log(fn.\_\_proto\_\_)  
-**3.所有的函数, 都有一个prototype属性，属性值也是普通的对象**  
+2.所有的引用类型（数组、对象、函数）,都有一个__proto__属性,属性值是一个普通的对象  
+console.log(obj.__proto__)  
+console.log(fn.__proto__)
+3.所有的函数, 都有一个prototype属性，属性值也是普通的对象  
 console.log(fn.prototype)  
-**4.所有的引用类型（数组、对象、函数）,\_\_proto\_\_属性值指向它的构造函数的"prototype"属性值**  
-console.log(obj.\_\_proto\_\_ === Object.prototype)  
-console.log(fn.\_\_proto\_\_ === Function.prototype)  
-**5.当试图得到一个对象的某个属性时, 如果这个对象本身没有这个属性, 那么会去它的\_\_proto\_\_即它的构造函数的prototype中寻找**  
+4.所有的引用类型（数组、对象、函数）,__proto__属性值指向它的构造函数的"prototype"属性值  
+console.log(obj.__proto__ === Object.prototype)  
+console.log(fn.__proto__ === Function.prototype)  
+5.当试图得到一个对象的某个属性时, 如果这个对象本身没有这个属性, 那么会去它的__proto__即它的构造函数的prototype中寻找  
+```
 //  构造函数  
 ```  
 function Foo(name, age) {  
