@@ -609,6 +609,12 @@ arr.forEach(val => {
   obj[val] = 1;
 })
 Object.keys(obj);
+
+const unique = arr => {
+  return arr.filter((ele, index, array) => {
+    return index === array.indexOf(ele)
+  })
+}
 ```
 
 # 简述事件冒泡流程
