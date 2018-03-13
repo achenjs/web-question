@@ -350,6 +350,20 @@ for (item in f) {
 # 原型链
 ![Alt text](/images/__proto__.png)  
 
+# 下面输出
+```
+setTimeout(() => console.log('a'), 0);
+var p = new Promise((resolve) => {
+  console.log('b');
+  resolve();
+});
+p.then(() => console.log('c'));
+p.then(() => console.log('d'));
+console.log('e');
+// 结果：b e c d a
+// 任务队列优先级：promise.Trick()>promise的回调>setTimeout>setImmediate
+```
+
 # 如何准确判断一个变量是数组类型
 arr instanceof Array
 
