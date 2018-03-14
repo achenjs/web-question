@@ -273,23 +273,40 @@ const FastArr = (arr) => {
 
 # 实现数组的随机排序 （JS基础算法）
 ```
-//  利用Math.random() 返回 0 ~ 1之间的随机数  
-function randomSort (a, b) {  
-  return Math.random() > 0.5 ? -1 : 1  
-}  
-var arr = [1, 2, 3, 4, 5, 6]  
+//  利用Math.random() 返回 0 ~ 1之间的随机数
+function randomSort (a, b) {
+  return Math.random() > 0.5 ? -1 : 1
+}
+var arr = [1, 2, 3, 4, 5, 6]
 arr.sort(randomSort)
 ```
 # 构造函数 (构造函数首字母要大写规范)
 ```
-function Foo (name, age) {  
-  this.name = name  
-  this.age = age  
-//  return this  // 默认有这一行  
-
-}  
+function Foo (name, age) {
+  this.name = name
+  this.age = age
+//  return this  // 默认有这一行
+}
 var f = new Foo('achen', 22)
 ```
+
+# 冒泡排序
+```
+let arr = [43, 32, 1, 5, 9, 22];
+const sort = arr => {
+    let res = []
+    arr.forEach((v, i) => {
+        for (let j = i + 1; j < arr.length; j++) {
+            if (arr[i] > arr[j]) {
+                [arr[i],arr[j]] = [arr[j],arr[i]]
+            }
+        }
+    })
+    return arr
+}
+console.log(sort(arr))  // [1, 5, 9, 22, 32, 43]
+```
+
 # 构造函数-扩展
 ```
 var a = {} 其实是 var a = new Object() 的语法糖  
