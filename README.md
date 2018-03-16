@@ -295,7 +295,16 @@ function Foo (name, age) {
 }
 var f = new Foo('achen', 22)
 ```
-
+# max min
+```
+let arr = [23, 4, 5, 2, 4, 5, 6, 6, 71, -3];
+const difference = arr => {
+    let max = Math.max(...arr),
+        min = Math.min(...arr);
+    return max - min ;
+}
+console.log(difference(arr)) // 74
+```
 # 冒泡排序
 ```
 let arr = [43, 32, 1, 5, 9, 22];
