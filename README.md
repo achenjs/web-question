@@ -330,6 +330,24 @@ result 为 result = y => mul(2 * y);
 
 // log(mul(2)(3)) 相当于log的最后返回的result 隐式调用valueOf 返回 6
 ```
+# 收集参数 延迟执行 到达指定次数才执行
+```
+// 参数收集 指定次数后执行
+function fn(...rest) {console.log(rest);};
+function after(fn, time = 1) {
+    let params = [];
+    return function(...rest) {
+        params = [...params, ...rest];
+        if (--time === 0) {
+            fn.apply(this, params);
+        }
+    }
+}
+let newFn = after(fn, 3); // 执行3次 内部fn才会执行
+newFn(2);
+newFn(3);
+newFn(4);
+```
 # 冒泡排序
 ```
 let arr = [43, 32, 1, 5, 9, 22];
