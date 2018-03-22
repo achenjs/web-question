@@ -364,7 +364,38 @@ const sort = arr => {
 }
 console.log(sort(arr))  // [1, 5, 9, 22, 32, 43]
 ```
+# 函数节流
+```
+throttle 策略的电梯。保证如果电梯第一个人进来后，50毫秒后准时运送一次，不等待。如果没有人，则待机。
+let throttle = (fn, delay = 50) => { // 节流 控制执行间隔时间 防止频繁触发 scroll resize mousemove
+  let stattime = 0;
+  return function (...args) {
+      let curTime = new Date();
+      if (curTime - stattime >= delay) {
+          fn.apply(this, args);
+          stattime = curTime;
+      }
+  }
+}
+```
+# Function的bind实现
+```
+Function.prototype._bind = function(context) {
+    let func = this;
+    let params = [].slice.call(arguments, 1);
+    return function() {
+        params = params.concat([].slice.call(arguments, 0));
+        func.apply(context, params);
+    }
+}
 
+let obj = {id: 24}
+
+function fn1(a) {
+    console.log(this, arguments);
+}
+let foo = fn1._bind(obj, obj.id);
+```
 # 构造函数-扩展
 ```
 var a = {} 其实是 var a = new Object() 的语法糖  
