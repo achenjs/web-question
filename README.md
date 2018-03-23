@@ -403,6 +403,28 @@ var a = [] 其实是 var a = new Array() 的语法糖
 function Foo(){...} 其实是 var Foo = new Function(...)  
 使用 instanceof 判断一个函数是否是一个变量的构造函数
 ```
+# 如何主动中止Promise调用链
+```
+const p1 = new Promise((resolve, reject) => {
+  setTimeout(() => { // 异步操作
+      resolve('start')
+  }, 1000);
+});
+
+p1.then((result) => {
+   console.log('a', result); 
+   return Promise.reject('中断后续调用'); // 此时rejected的状态将直接跳到catch里，剩下的调用不会再继续
+}).then(result => {
+   console.log('b', result);
+}).then(result => {
+   console.log('c', result);
+}).catch(err => {
+   console.log(err);
+});
+
+// a start
+// 中断后续调用
+```
 # 原型规则和示例
 ```
 1.所有的引用类型（数组、对象、函数）,都具有对象特性，即可自由扩展属性  
