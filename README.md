@@ -13,6 +13,18 @@ postMessage(data,origin)
 2. 多窗口之间消息传递
 3. 页面与嵌套的iframe消息传递
 
+# 普通函数this和ES6箭头函数中的this不同点
+```
+普通函数中的this:
+1. this总是代表它的直接调用者(js的this是执行上下文), 例如 obj.func ,那么func中的this就是obj
+2.在默认情况(非严格模式下,未使用 'use strict'),没找到直接调用者,则this指的是 window (约定俗成)
+3.在严格模式下,没有直接调用者的函数中的this是 undefined
+4.使用call,apply,bind(ES5新增)绑定的,this指的是 绑定的对象
+
+箭头函数中的this:
+箭头函数没有自己的this, 它的this是继承而来; 默认指向在定义它时所处的对象(宿主对象),而不是执行时的对象, 定义它的时候,可能环境是window; 箭头函数可以方便地让我们在 setTimeout ,setInterval中方便的使用this
+```
+
 # Webpack
 ```
 entry: 用来写入口文件，它将是整个依赖关系的根
@@ -24,6 +36,38 @@ new HtmlWebpackPlugin({
   inject: true,
   template: paths.appHtml,
 }),                                        根据一个index.html,生成一个自动引用你打包后的js文件的新index.html    
+```
+
+# Webpack的打包优化策略
+```
+1. 总结需要抽离的公共依赖。
+  这些依赖需要满足一定的条件：
+体积较大；
+不常更新；
+依赖较多；
+是前置依赖；
+
+2. 使用CDN引入资源
+<head>
+  <title>React Starter Kit</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- 体积较大的包 -->
+  <script src="https://cdn.bootcss.com/react/15.0.0/react-with-addons.min.js"></script>
+  <script src="https://cdn.bootcss.com/react/15.0.0/react-dom.min.js"></script>
+  <script src="https://cdn.bootcss.com/react-router/3.0.0/ReactRouter.min.js"></script>
+  <script src="https://cdn.bootcss.com/redux/3.6.0/redux.min.js"></script>
+  <script src="https://cdn.bootcss.com/react-redux/5.0.1/react-redux.min.js"></script>
+  <script src="https://cdn.bootcss.com/history/4.5.0/history.min.js"></script>
+</head>
+
+1. 配置vendor，使vendor也不打包该些JS
+cendor: [
+  'element-ui',
+  'jquery',
+  'axios'
+];
+
 ```
 
 # http状态码
