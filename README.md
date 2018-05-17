@@ -317,6 +317,14 @@ const FastArr = (arr) => {
 }
 ```
 
+# isNaN
+```
+isNaN方法能接收一个参数，并且会先尝试将它转成number类型:
+isNaN('10') // false
+isNaN('aa') // true
+isNaN(true) // false
+```
+
 # 路由实现
 1. location.hash+hashchange
 2. history.pushState()+popState
